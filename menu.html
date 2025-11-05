@@ -144,6 +144,60 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+
+    <style>
+      .breadcrumbs.overlayy::before {
+        content: "";
+        background: rgba(196, 0, 0, 0.7) !important; /* merah semi transparan */
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+      }
+
+      /* pastikan teks tampil di atas overlay */
+      .breadcrumbs .container,
+      .breadcrumbs .bread-inner {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* teks dan ikon breadcrumb */
+      .breadcrumbs h2 {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .breadcrumbs .bread-list li,
+      .breadcrumbs .bread-list a {
+        color: #fff;
+      }
+
+      .breadcrumbs .bread-list li.active {
+        color: #ffbaba; /* sedikit lebih terang */
+      }
+
+      /* Force warna merah untuk tombol danger */
+      .btn-danger {
+        background-color: #c40000 !important;
+        border-color: #c40000 !important;
+        color: #fff !important;
+      }
+
+      .btn-danger:hover,
+      .btn-danger:focus {
+        background-color: #a80000 !important;
+        border-color: #a80000 !important;
+        color: #fff !important;
+      }
+
+      /* Jika template punya custom .btn-group button spacing, atur ulang */
+      .btn-group .btn {
+        margin-right: 5px;
+      }
+    </style>
   </head>
   <body>
     <!-- Preloader -->
@@ -167,11 +221,6 @@
 
     <!-- Header Area -->
     <header class="header">
-      <!-- Topbar -->
-      <div class="topbar">
-        <div class="container"></div>
-      </div>
-      <!-- End Topbar -->
       <!-- Header Inner -->
       <div class="header-inner">
         <div class="container">
@@ -225,7 +274,7 @@
     <!-- End Header Area -->
 
     <!-- Breadcrumbs -->
-    <div class="breadcrumbs overlay">
+    <div class="breadcrumbs overlayy">
       <div class="container">
         <div class="bread-inner">
           <div class="row">
@@ -244,34 +293,210 @@
     <!-- End Breadcrumbs -->
 
     <!-- main start -->
-    <section class="menu mt-4 mb-3" id="menu">
-      <!-- btn grup menu -->
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-12">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-danger" id="btnPaket">
-                Paket
-              </button>
-              <button type="button" class="btn btn-danger" id="btnMakanan">
-                Makanan
-              </button>
-              <button type="button" class="btn btn-danger" id="btnMinuman">
-                Minuman
-              </button>
-              <button type="button" class="btn btn-danger" id="btnCemilan">
-                Cemilan
-              </button>
+    <!-- btn grup menu -->
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="btn-group" role="group" aria-label="Menu Button Group">
+            <button type="button" class="btn btn-danger" id="btnPaket">
+              Paket
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              id="btnMakanan"
+            >
+              Makanan
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              id="btnMinuman"
+            >
+              Minuman
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              id="btnCemilan"
+            >
+              Cemilan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paket container menu -->
+    <div id="paketContainer">
+      <div class="card shadow mt-3 mb-4">
+        <div class="card-header text-center py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Menu Paket</h6>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Menu</th>
+                    <th>Harga</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Nasi + Ayam + Tempe + Tahu</th>
+                    <th>Rp. 25.000</th>
+                  </tr>
+                  <tr>
+                    <th>Nasi + Ayam + tempe + Tahu + sayur Asem</th>
+                    <th>Rp. 30.000</th>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- container menu -->
-      <div id="paketCotainer">
-        <div class="card"></div>
+    <!-- makanan container menu -->
+    <div id="makananContainer" style="display: none">
+      <div class="card shadow mt-3 mb-4">
+        <div class="card-header text-center py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Menu Makanan</h6>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Menu</th>
+                    <th>Harga</th>
+                  </tr>
+                  <tr>
+                    <th>Nasi Putih</th>
+                    <th>Rp. 5.000</th>
+                  </tr>
+                  <tr>
+                    <th>Nasi Daun Jeruk</th>
+                    <th>Rp. 7.000</th>
+                  </tr>
+                  <tr>
+                    <th>Telur Crispy</th>
+                    <th>Rp. 7.000</th>
+                  </tr>
+                  <tr>
+                    <th>Ayam Goreng</th>
+                    <th>Rp. 15.000</th>
+                  </tr>
+                  <tr>
+                    <th>Nila Goreng</th>
+                    <th>Rp. 15.000</th>
+                  </tr>
+                  <tr>
+                    <th>Lele Goreng</th>
+                    <th>Rp. 12.000</th>
+                  </tr>
+                  <tr>
+                    <th>Daging Empal</th>
+                    <th>Rp. 20.000</th>
+                  </tr>
+                  <tr>
+                    <th>Sayur Asem</th>
+                    <th>Rp. 5.000</th>
+                  </tr>
+                  <tr>
+                    <th>Tahu Goreng</th>
+                    <th>Rp. 5.000</th>
+                  </tr>
+                  <tr>
+                    <th>Tempe Goreng</th>
+                    <th>Rp. 5.000</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+
+    <!-- minuman container menu  -->
+    <div id="minumanContainer" style="display: none">
+      <div class="card shadow mt-3 mb-4">
+        <div class="card-header text-center py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Menu Minuman</h6>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Menu</th>
+                    <th>Harga</th>
+                  </tr>
+                  <tr>
+                    <th>Teh Tawar</th>
+                    <th>Rp. 5.000</th>
+                  </tr>
+                  <tr>
+                    <th>Teh Manis</th>
+                    <th>Rp. 8.000</th>
+                  </tr>
+                  <tr>
+                    <th>Jeruk</th>
+                    <th>Rp. 10.000</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- cemilan cotainer menu -->
+    <div id="cemilanContainer" style="display: none">
+      <div class="card shadow mt-3 mb-4">
+        <div class="card-header text-center py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Menu Cemilan</h6>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Menu</th>
+                    <th>Harga</th>
+                  </tr>
+                  <tr>
+                    <th>Bakwan Sayur</th>
+                    <th>Rp. 10.000</th>
+                  </tr>
+                  <tr>
+                    <th>Tempe Mendoan</th>
+                    <th>Rp. 10.000</th>
+                  </tr>
+                  <tr>
+                    <th>Singkong Gurih</th>
+                    <th>Rp. 10.000</th>
+                  </tr>
+                  <tr>
+                    <th>Tahu Bakso</th>
+                    <th>Rp. 10.000</th>
+                  </tr>
+                  <tr>
+                    <th>Dadar Jagung</th>
+                    <th>Rp. 15.000</th>
+                  </tr>
+                  <tr>
+                    <th>Rujak Eskrim</th>
+                    <th>Rp. 10.000</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- main end -->
 
     <!-- Footer Area -->
@@ -280,11 +505,33 @@
       <div class="copyright bg-dark">
         <div class="container">
           <div class="row">
+            <!-- Links -->
+            <div class="col-lg-12 col-md-12 col-12 mb-3">
+              <a href=""
+                ><i
+                  class="fa-brands fa-square-instagram fa-2xl"
+                  style="color: #c13584"
+                ></i
+              ></a>
+              <a href=""
+                ><i
+                  class="fa-solid fa-location-dot fa-beat fa-2xl"
+                  style="color: red; margin: 1rem"
+                ></i
+              ></a>
+              <a href=""
+                ><i
+                  class="fa-brands fa-square-whatsapp fa-2xl"
+                  style="color: lightgreen"
+                ></i
+              ></a>
+            </div>
             <div class="col-lg-12 col-md-12 col-12">
               <div class="copyright-content">
                 <p>
-                  © Copyright 2019 -
-                  <a href="" target="_blank">Semesis.id</a> All Rights Reserved
+                  © Copyright 2025 -
+                  <a href="" target="_blank">warung Ubyang-Ubyung.</a> All
+                  Rights Reserved
                 </p>
               </div>
             </div>
@@ -297,13 +544,75 @@
 
     <!-- toggle btn grup menu-->
     <script>
-      const btnPaket = document.getElementById(btnPaket);
-      const btnMakanan = document.getElementById(btnMakanan);
-      const btnMinuman = document.getElementById(btnMinuman);
-      const btnCemilan = document.getElementById(btnCemilan);
-      const btnAdd = document.getElementById(btnAdd);
+      const btnPaket = document.getElementById("btnPaket");
+      const btnMakanan = document.getElementById("btnMakanan");
+      const btnMinuman = document.getElementById("btnMinuman");
+      const btnCemilan = document.getElementById("btnCemilan");
+      const btnAdd = document.getElementById("btnAdd");
+      const paketContainer = document.getElementById("paketContainer");
+      const makananContainer = document.getElementById("makananContainer");
+      const minumanContainer = document.getElementById("minumanContainer");
+      const cemilanContainer = document.getElementById("cemilanContainer");
 
-      btnPaket.addEventListener("click", function () {});
+      btnPaket.addEventListener("click", function () {
+        paketContainer.style.display = "block";
+        makananContainer.style.display = "none";
+        minumanContainer.style.display = "none";
+        cemilanContainer.style.display = "none";
+        btnPaket.classList.add("btn-danger");
+        btnPaket.classList.remove("btn-outline-danger");
+        btnMakanan.classList.add("btn-outline-danger");
+        btnMakanan.classList.remove("btn-danger");
+        btnMinuman.classList.add("btn-outline-danger");
+        btnMinuman.classList.remove("btn-danger");
+        btnCemilan.classList.add("btn-outline-danger");
+        btnCemilan.classList.remove("btn-danger");
+      });
+
+      btnMakanan.addEventListener("click", function () {
+        paketContainer.style.display = "none";
+        makananContainer.style.display = "block";
+        minumanContainer.style.display = "none";
+        cemilanContainer.style.display = "none";
+        btnPaket.classList.add("btn-outline-danger");
+        btnPaket.classList.remove("btn-danger");
+        btnMakanan.classList.add("btn-danger");
+        btnMakanan.classList.remove("btn-outline-danger");
+        btnMinuman.classList.add("btn-outline-danger");
+        btnMinuman.classList.remove("btn-danger");
+        btnCemilan.classList.add("btn-outline-danger");
+        btnCemilan.classList.remove("btn-danger");
+      });
+
+      btnMinuman.addEventListener("click", function () {
+        paketContainer.style.display = "none";
+        makananContainer.style.display = "none";
+        minumanContainer.style.display = "block";
+        cemilanContainer.style.display = "none";
+        btnPaket.classList.add("btn-outline-danger");
+        btnPaket.classList.remove("btn-danger");
+        btnMakanan.classList.add("btn-outline-danger");
+        btnMakanan.classList.remove("btn-danger");
+        btnMinuman.classList.add("btn-danger");
+        btnMinuman.classList.remove("btn-outline-danger");
+        btnCemilan.classList.add("btn-outline-danger");
+        btnCemilan.classList.remove("btn-danger");
+      });
+
+      btnCemilan.addEventListener("click", function () {
+        paketContainer.style.display = "none";
+        makananContainer.style.display = "none";
+        minumanContainer.style.display = "none";
+        cemilanContainer.style.display = "block";
+        btnPaket.classList.add("btn-outline-danger");
+        btnPaket.classList.remove("btn-danger");
+        btnMakanan.classList.add("btn-outline-danger");
+        btnMakanan.classList.remove("btn-danger");
+        btnMinuman.classList.add("btn-outline-danger");
+        btnMinuman.classList.remove("btn-danger");
+        btnCemilan.classList.add("btn-danger");
+        btnCemilan.classList.remove("btn-outline-danger");
+      });
     </script>
     <!-- jquery Min JS -->
     <script src="js/jquery.min.js"></script>

@@ -106,23 +106,7 @@ body {
   line-height: 22px;
   margin-bottom: 10px;
 }
-.get-pro {
-  position: absolute;
-  left: -80px;
-  width: 80px;
-  height: 45px;
-  line-height: 45px;
-  font-size: 14px;
-  border-radius: 5px 0 0 5px;
-  background: #1a76d1;
-  text-align: center;
-  color: #fff;
-  top: 0;
-  cursor: pointer;
-  box-shadow: -4px 0px 5px #00000036;
-}
-.get-pro:hover {
-}
+
 #scrollUp {
   bottom: 15px;
   right: 15px;
@@ -2132,15 +2116,15 @@ body {
   padding-bottom: 20px;
   text-align: left;
 }
-.contact-us .contact-us-form h2:before {
-  position: absolute;
+/* .contact-us .contact-us-form h2:before {
+  position: "";
   content: "";
   left: 0;
   bottom: 0;
   height: 2px;
   width: 50px;
-  background: red;
-}
+  background: rgba(red, 0, 0, 0.2);
+} */
 .contact-us .contact-us-form p {
   font-size: 14px;
   color: #333;

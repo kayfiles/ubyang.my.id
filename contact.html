@@ -56,6 +56,42 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+
+    <style>
+      .breadcrumbs.overlayy::before {
+        content: "";
+        background: rgba(196, 0, 0, 0.7) !important; /* merah semi transparan */
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+      }
+
+      /* pastikan teks tampil di atas overlay */
+      .breadcrumbs .container,
+      .breadcrumbs .bread-inner {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* teks dan ikon breadcrumb */
+      .breadcrumbs h2 {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .breadcrumbs .bread-list li,
+      .breadcrumbs .bread-list a {
+        color: #fff;
+      }
+
+      .breadcrumbs .bread-list li.active {
+        color: #ffbaba; /* sedikit lebih terang */
+      }
+
+    </style>
   </head>
   <body>
     <!-- Preloader -->
@@ -135,7 +171,7 @@
     <!-- End Header Area -->
 
     <!-- Breadcrumbs -->
-    <div class="breadcrumbs overlay">
+    <div class="breadcrumbs overlayy">
       <div class="container">
         <div class="bread-inner">
           <div class="row">
@@ -288,7 +324,7 @@
               <div class="copyright-content">
                 <p>
                   © Copyright 2025 -
-                  <a href="" target="_blank">Ubyang Ubyung.</a> All Rights
+                  <a href="" target="_blank"> warung Ubyang-Ubyung.</a> All Rights
                   Reserved
                 </p>
               </div>
