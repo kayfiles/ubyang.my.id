@@ -197,6 +197,146 @@
       .btn-group .btn {
         margin-right: 5px;
       }
+
+      /* ==== Animasi Transisi Kontainer Menu ==== */
+      .menu-container {
+        display: none;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.5s ease;
+      }
+
+      .menu-container.active {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+        animation: slideInRight 0.5s ease forwards;
+      }
+
+      .menu-container.exit {
+        animation: slideOutLeft 0.4s ease forwards;
+      }
+
+      /* Keyframes animasi */
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideOutLeft {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateX(-100%);
+        }
+      }
+
+      /* Pastikan footer selalu di bawah konten */
+      footer.footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        z-index: 0;
+        background: #111; /* opsional: jaga tampilan tetap solid */
+        padding-top: 20px;
+      }
+
+      /* Tambahkan ruang bawah agar konten tidak nempel footer */
+      .menu-container {
+        margin-bottom: 120px; /* beri ruang di bawah */
+        min-height: 400px; /* jaga tinggi minimal */
+      }
+
+      /* Hapus padding tambahan di body */
+      body {
+        padding-bottom: 0;
+      }
+
+      /* === PERBAIKAN FOOTER MENUTUP TABEL === */
+      footer.footer,
+      footer#footer,
+      .footer .copyright {
+        position: relative !important;
+        bottom: auto !important;
+        left: 0;
+        width: 100%;
+        z-index: 1 !important;
+      }
+
+      /* pastikan area bawah konten cukup tinggi agar footer tidak tumpang tindih */
+      body {
+        padding-bottom: 150px !important;
+      }
+
+      /* tambahkan ruang di bawah container agar tidak tertutup footer */
+      .menu-container {
+        margin-bottom: 200px !important;
+      }
+
+      /* hilangkan posisi absolut pada .copyright bawaan template */
+      .footer .copyright.bg-dark {
+        position: relative !important;
+      }
+
+      /* === FIX FOOTER MENUTUP TABEL === */
+
+      /* Pastikan footer ikut terdorong dengan konten */
+      footer.footer,
+      #footer {
+        position: relative !important;
+        bottom: 0 !important;
+        width: 100%;
+        z-index: 1 !important;
+      }
+
+      /* Override CSS bawaan template Medipro */
+      .footer .copyright.bg-dark {
+        position: relative !important;
+        bottom: auto !important;
+      }
+
+      /* Tambahkan jarak bawah di kontainer utama agar footer tidak tumpuk */
+      .menu-container {
+        margin-bottom: 250px !important;
+        min-height: 400px !important;
+        display: none;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.5s ease;
+      }
+
+      /* Kontainer aktif terlihat normal */
+      .menu-container.active {
+        display: block !important;
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Tambahkan padding bawah halaman */
+      body {
+        padding-bottom: 200px !important;
+      }
+
+      /* Pastikan animasi tidak menghentikan reflow */
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
     </style>
   </head>
   <body>
@@ -328,170 +468,196 @@
     </div>
 
     <!-- Paket container menu -->
-    <div id="paketContainer">
+    <div id="paketContainer" class="menu-container active">
       <div class="card shadow mt-3 mb-4">
         <div class="card-header text-center py-3">
           <h6 class="m-0 font-weight-bold text-primary">Menu Paket</h6>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Menu</th>
-                    <th>Harga</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th>Nasi + Ayam + Tempe + Tahu</th>
-                    <th>Rp. 25.000</th>
-                  </tr>
-                  <tr>
-                    <th>Nasi + Ayam + tempe + Tahu + sayur Asem</th>
-                    <th>Rp. 30.000</th>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Menu</th>
+                  <th>Foto</th>
+                  <th>Harga</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Ayam Goreng</th>
+                  <th>
+                    <img
+                      src="assets/img/makanan/ase.jpg"
+                      style="height: 5rem; width: auto"
+                      alt="paket 1"
+                    />
+                  </th>
+                  <th>Rp. 15.000</th>
+                </tr>
+                <tr>
+                  <th>Nasi + Ayam + Tempe + Tahu</th>
+                  <th>
+                    <img
+                      src="assets/img/makanan/2.jpeg"
+                      style="height: 5rem; width: auto"
+                      alt="paket 2"
+                    />
+                  </th>
+                  <th>Rp. 25.000</th>
+                </tr>
+                <tr>
+                  <th>Nasi + Ayam + tempe + Tahu + sayur Asem</th>
+                  <th>
+                    <img
+                      src="assets/img/makanan/3.jpg"
+                      style="height: 5rem; width: auto"
+                      alt="paket 3"
+                    />
+                  </th>
+                  <th>Rp. 30.000</th>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
 
     <!-- makanan container menu -->
-    <div id="makananContainer" style="display: none">
+    <div id="makananContainer" class="menu-container">
       <div class="card shadow mt-3 mb-4">
         <div class="card-header text-center py-3">
           <h6 class="m-0 font-weight-bold text-primary">Menu Makanan</h6>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Menu</th>
-                    <th>Harga</th>
-                  </tr>
-                  <tr>
-                    <th>Nasi Putih</th>
-                    <th>Rp. 5.000</th>
-                  </tr>
-                  <tr>
-                    <th>Nasi Daun Jeruk</th>
-                    <th>Rp. 7.000</th>
-                  </tr>
-                  <tr>
-                    <th>Telur Crispy</th>
-                    <th>Rp. 7.000</th>
-                  </tr>
-                  <tr>
-                    <th>Ayam Goreng</th>
-                    <th>Rp. 15.000</th>
-                  </tr>
-                  <tr>
-                    <th>Nila Goreng</th>
-                    <th>Rp. 15.000</th>
-                  </tr>
-                  <tr>
-                    <th>Lele Goreng</th>
-                    <th>Rp. 12.000</th>
-                  </tr>
-                  <tr>
-                    <th>Daging Empal</th>
-                    <th>Rp. 20.000</th>
-                  </tr>
-                  <tr>
-                    <th>Sayur Asem</th>
-                    <th>Rp. 5.000</th>
-                  </tr>
-                  <tr>
-                    <th>Tahu Goreng</th>
-                    <th>Rp. 5.000</th>
-                  </tr>
-                  <tr>
-                    <th>Tempe Goreng</th>
-                    <th>Rp. 5.000</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Menu</th>
+                  <th>Harga</th>
+                </tr>
+                <tr>
+                  <th>Nasi Putih</th>
+                  <th>Rp. 5.000</th>
+                </tr>
+                <tr>
+                  <th>Nasi Daun Jeruk</th>
+                  <th>Rp. 7.000</th>
+                </tr>
+                <tr>
+                  <th>Telur Crispy</th>
+                  <th>Rp. 7.000</th>
+                </tr>
+                <tr>
+                  <th>Ayam Goreng</th>
+                  <th>Rp. 15.000</th>
+                </tr>
+                <tr>
+                  <th>Nila Goreng</th>
+                  <th>Rp. 15.000</th>
+                </tr>
+                <tr>
+                  <th>Lele Goreng</th>
+                  <th>Rp. 12.000</th>
+                </tr>
+                <tr>
+                  <th>Daging Empal</th>
+                  <th>Rp. 20.000</th>
+                </tr>
+                <tr>
+                  <th>Sayur Asem</th>
+                  <th>Rp. 5.000</th>
+                </tr>
+                <tr>
+                  <th>Tahu Goreng</th>
+                  <th>Rp. 5.000</th>
+                </tr>
+                <tr>
+                  <th>Tempe Goreng</th>
+                  <th>Rp. 5.000</th>
+                </tr>
+              </thead>
+            </table>
           </div>
         </div>
       </div>
     </div>
 
     <!-- minuman container menu  -->
-    <div id="minumanContainer" style="display: none">
+    <div id="minumanContainer" class="menu-container">
       <div class="card shadow mt-3 mb-4">
         <div class="card-header text-center py-3">
           <h6 class="m-0 font-weight-bold text-primary">Menu Minuman</h6>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Menu</th>
-                    <th>Harga</th>
-                  </tr>
-                  <tr>
-                    <th>Teh Tawar</th>
-                    <th>Rp. 5.000</th>
-                  </tr>
-                  <tr>
-                    <th>Teh Manis</th>
-                    <th>Rp. 8.000</th>
-                  </tr>
-                  <tr>
-                    <th>Jeruk</th>
-                    <th>Rp. 10.000</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Menu</th>
+                  <th>Harga</th>
+                </tr>
+                <tr>
+                  <th>Teh Tawar</th>
+                  <th>Rp. 5.000</th>
+                </tr>
+                <tr>
+                  <th>Teh Manis</th>
+                  <th>Rp. 8.000</th>
+                </tr>
+                <tr>
+                  <th>Jeruk</th>
+                  <th>Rp. 10.000</th>
+                </tr>
+              </thead>
+            </table>
           </div>
         </div>
       </div>
     </div>
 
     <!-- cemilan cotainer menu -->
-    <div id="cemilanContainer" style="display: none">
+    <div id="cemilanContainer" class="menu-container">
       <div class="card shadow mt-3 mb-4">
         <div class="card-header text-center py-3">
           <h6 class="m-0 font-weight-bold text-primary">Menu Cemilan</h6>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Menu</th>
-                    <th>Harga</th>
-                  </tr>
-                  <tr>
-                    <th>Bakwan Sayur</th>
-                    <th>Rp. 10.000</th>
-                  </tr>
-                  <tr>
-                    <th>Tempe Mendoan</th>
-                    <th>Rp. 10.000</th>
-                  </tr>
-                  <tr>
-                    <th>Singkong Gurih</th>
-                    <th>Rp. 10.000</th>
-                  </tr>
-                  <tr>
-                    <th>Tahu Bakso</th>
-                    <th>Rp. 10.000</th>
-                  </tr>
-                  <tr>
-                    <th>Dadar Jagung</th>
-                    <th>Rp. 15.000</th>
-                  </tr>
-                  <tr>
-                    <th>Rujak Eskrim</th>
-                    <th>Rp. 10.000</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Menu</th>
+                  <th>Harga</th>
+                </tr>
+                <tr>
+                  <th>Bakwan Sayur</th>
+                  <th>Rp. 10.000</th>
+                </tr>
+                <tr>
+                  <th>Tempe Mendoan</th>
+                  <th>Rp. 10.000</th>
+                </tr>
+                <tr>
+                  <th>Singkong Gurih</th>
+                  <th>Rp. 10.000</th>
+                </tr>
+                <tr>
+                  <th>Tahu Bakso</th>
+                  <th>Rp. 10.000</th>
+                </tr>
+                <tr>
+                  <th>Dadar Jagung</th>
+                  <th>Rp. 15.000</th>
+                </tr>
+                <tr>
+                  <th>Rujak Eskrim</th>
+                  <th>Rp. 10.000</th>
+                </tr>
+              </thead>
+            </table>
           </div>
         </div>
       </div>
@@ -504,34 +670,54 @@
       <!-- Copyright -->
       <div class="copyright bg-dark">
         <div class="container">
-          <div class="row">
+          <div class="row text-center">
             <!-- Links -->
             <div class="col-lg-12 col-md-12 col-12 mb-3">
-              <a href=""
-                ><i
+              <!-- Instagram -->
+              <a
+                href="https://www.instagram.com/warung.ubyangubyung/"
+                target="_blank"
+              >
+                <i
                   class="fa-brands fa-square-instagram fa-2xl"
-                  style="color: #c13584"
-                ></i
-              ></a>
-              <a href=""
-                ><i
+                  style="color: #c13584; margin: 0 1rem"
+                ></i>
+              </a>
+
+              <!-- Lokasi (Google Maps) -->
+              <a
+                href="https://www.google.com/maps?q=Warung+Ubyang+Ubyung"
+                target="_blank"
+              >
+                <i
                   class="fa-solid fa-location-dot fa-beat fa-2xl"
-                  style="color: red; margin: 1rem"
-                ></i
-              ></a>
-              <a href=""
-                ><i
+                  style="color: red; margin: 0 1rem"
+                ></i>
+              </a>
+
+              <!-- WhatsApp -->
+              <a
+                href="https://wa.me/6285173053120?text=Halo%20Warung%20Ubyang-Ubyung%2C%20saya%20ingin%20memesan%20atau%20menanyakan%20menu%20hari%20ini%20😊"
+                target="_blank"
+              >
+                <i
                   class="fa-brands fa-square-whatsapp fa-2xl"
-                  style="color: lightgreen"
-                ></i
-              ></a>
+                  style="color: lightgreen; margin: 0 1rem"
+                ></i>
+              </a>
             </div>
+
+            <!-- Copyright Text -->
             <div class="col-lg-12 col-md-12 col-12">
               <div class="copyright-content">
-                <p>
+                <p class="text-white mb-0">
                   © Copyright 2025 -
-                  <a href="" target="_blank">warung Ubyang-Ubyung.</a> All
-                  Rights Reserved
+                  <a
+                    href="https://www.instagram.com/warung.ubyangubyung/"
+                    target="_blank"
+                    class="text-white fw-bold"
+                    >Warung Ubyang-Ubyung</a
+                  >. All Rights Reserved
                 </p>
               </div>
             </div>
@@ -540,80 +726,67 @@
       </div>
       <!--/ End Copyright -->
     </footer>
+
     <!--/ End Footer Area -->
 
     <!-- toggle btn grup menu-->
     <script>
-      const btnPaket = document.getElementById("btnPaket");
-      const btnMakanan = document.getElementById("btnMakanan");
-      const btnMinuman = document.getElementById("btnMinuman");
-      const btnCemilan = document.getElementById("btnCemilan");
-      const btnAdd = document.getElementById("btnAdd");
-      const paketContainer = document.getElementById("paketContainer");
-      const makananContainer = document.getElementById("makananContainer");
-      const minumanContainer = document.getElementById("minumanContainer");
-      const cemilanContainer = document.getElementById("cemilanContainer");
+      const containers = {
+        paket: document.getElementById("paketContainer"),
+        makanan: document.getElementById("makananContainer"),
+        minuman: document.getElementById("minumanContainer"),
+        cemilan: document.getElementById("cemilanContainer"),
+      };
 
-      btnPaket.addEventListener("click", function () {
-        paketContainer.style.display = "block";
-        makananContainer.style.display = "none";
-        minumanContainer.style.display = "none";
-        cemilanContainer.style.display = "none";
-        btnPaket.classList.add("btn-danger");
-        btnPaket.classList.remove("btn-outline-danger");
-        btnMakanan.classList.add("btn-outline-danger");
-        btnMakanan.classList.remove("btn-danger");
-        btnMinuman.classList.add("btn-outline-danger");
-        btnMinuman.classList.remove("btn-danger");
-        btnCemilan.classList.add("btn-outline-danger");
-        btnCemilan.classList.remove("btn-danger");
-      });
+      const buttons = {
+        paket: document.getElementById("btnPaket"),
+        makanan: document.getElementById("btnMakanan"),
+        minuman: document.getElementById("btnMinuman"),
+        cemilan: document.getElementById("btnCemilan"),
+      };
 
-      btnMakanan.addEventListener("click", function () {
-        paketContainer.style.display = "none";
-        makananContainer.style.display = "block";
-        minumanContainer.style.display = "none";
-        cemilanContainer.style.display = "none";
-        btnPaket.classList.add("btn-outline-danger");
-        btnPaket.classList.remove("btn-danger");
-        btnMakanan.classList.add("btn-danger");
-        btnMakanan.classList.remove("btn-outline-danger");
-        btnMinuman.classList.add("btn-outline-danger");
-        btnMinuman.classList.remove("btn-danger");
-        btnCemilan.classList.add("btn-outline-danger");
-        btnCemilan.classList.remove("btn-danger");
-      });
+      let activeContainer = containers.paket;
 
-      btnMinuman.addEventListener("click", function () {
-        paketContainer.style.display = "none";
-        makananContainer.style.display = "none";
-        minumanContainer.style.display = "block";
-        cemilanContainer.style.display = "none";
-        btnPaket.classList.add("btn-outline-danger");
-        btnPaket.classList.remove("btn-danger");
-        btnMakanan.classList.add("btn-outline-danger");
-        btnMakanan.classList.remove("btn-danger");
-        btnMinuman.classList.add("btn-danger");
-        btnMinuman.classList.remove("btn-outline-danger");
-        btnCemilan.classList.add("btn-outline-danger");
-        btnCemilan.classList.remove("btn-danger");
-      });
+      function showContainer(name) {
+        if (activeContainer === containers[name]) return; // jika sama, abaikan
 
-      btnCemilan.addEventListener("click", function () {
-        paketContainer.style.display = "none";
-        makananContainer.style.display = "none";
-        minumanContainer.style.display = "none";
-        cemilanContainer.style.display = "block";
-        btnPaket.classList.add("btn-outline-danger");
-        btnPaket.classList.remove("btn-danger");
-        btnMakanan.classList.add("btn-outline-danger");
-        btnMakanan.classList.remove("btn-danger");
-        btnMinuman.classList.add("btn-outline-danger");
-        btnMinuman.classList.remove("btn-danger");
-        btnCemilan.classList.add("btn-danger");
-        btnCemilan.classList.remove("btn-outline-danger");
-      });
+        // animasi keluar untuk container aktif
+        activeContainer.classList.remove("active");
+        activeContainer.classList.add("exit");
+
+        // hapus class exit setelah animasi selesai
+        setTimeout(() => {
+          activeContainer.classList.remove("exit");
+          activeContainer.style.display = "none";
+        }, 400);
+
+        // tampilkan container baru
+        containers[name].style.display = "block";
+        setTimeout(() => {
+          containers[name].classList.add("active");
+        }, 50);
+
+        activeContainer = containers[name];
+
+        // update tombol aktif
+        Object.keys(buttons).forEach((key) => {
+          if (key === name) {
+            buttons[key].classList.add("btn-danger");
+            buttons[key].classList.remove("btn-outline-danger");
+          } else {
+            buttons[key].classList.remove("btn-danger");
+            buttons[key].classList.add("btn-outline-danger");
+          }
+        });
+      }
+
+      // event listener tombol
+      buttons.paket.addEventListener("click", () => showContainer("paket"));
+      buttons.makanan.addEventListener("click", () => showContainer("makanan"));
+      buttons.minuman.addEventListener("click", () => showContainer("minuman"));
+      buttons.cemilan.addEventListener("click", () => showContainer("cemilan"));
     </script>
+
     <!-- jquery Min JS -->
     <script src="js/jquery.min.js"></script>
     <!-- jquery Migrate JS -->
